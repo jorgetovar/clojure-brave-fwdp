@@ -47,7 +47,10 @@
       (map #(:name %) coll)
       )
 
-
+(defn seq->csv [coll]
+      (cs/join "/n"
+               (map #(cs/join "," [(:name %) (str (:glitter-index %))]) coll)
+               ))
 
 (defn mapify
       "Return a seq of maps like {:name \"Edward Cullen\" :glitter-index 10}"
